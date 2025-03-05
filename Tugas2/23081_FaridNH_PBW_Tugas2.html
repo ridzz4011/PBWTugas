@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Form & Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 500px;
+        }
+        
+        .form-container, .table-container, .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: calc(100% - 30px);
+            padding: 8px;
+            margin: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+
+        button {
+            width: calc(100% - 12px);
+            padding: 10px;
+            background-color: #08519c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #3182bd;
+            color: white;
+        }
+
+        .total-row {
+            font-weight: bold;
+        }
+
+        .wrapper {
+            display: flex;
+            gap: 20px;
+        }
+
+        .chart-container {
+            width: auto;
+            height: auto;
+            display: flex;
+        }
+
+        canvas {
+            width: 100%;
+            height: 60vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="form-container">
+                <h2>Form Penjualan</h2>
+                <label>Produk</label>
+                <input type="text" placeholder="Nama Produk">
+                <label>Jumlah</label>
+                <input type="number" placeholder="Jumlah">
+                <label>Harga</label>
+                <input type="text" placeholder="Harga">
+                <button>Tambahkan</button>
+            </div>
+            
+            <div class="table-container">
+                <h2>Data Penjualan Bulanan</h2>
+                <table>
+                    <tr>
+                        <th rowspan="2">No</th>
+                        <th rowspan="2">Produk</th>
+                        <th colspan="2">Penjualan</th>
+                    </tr>
+                    <tr>
+                        <th>Jumlah</th>
+                        <th>Harga Total</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Sepatu</td>
+                        <td>50</td>
+                        <td>Rp 25.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Tas</td>
+                        <td>30</td>
+                        <td>Rp 15.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Jam Tangan</td>
+                        <td>20</td>
+                        <td>Rp 10.000.000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="2">Total Penjualan</td>
+                        <td>100</td>
+                        <td>Rp 50.000.000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="salesChart"></canvas>
+        </div>
+    </div>
+    
+    <!-- Biar keren aja dikasih chart :P -->
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Sepatu', 'Tas', 'Jam Tangan'],
+                datasets: [{
+                    label: 'Jumlah Terjual',
+                    data: [50, 30, 20],
+                    backgroundColor: ['red', 'blue', 'green']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+    </script>
+</body>
+</html>
