@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+@layer utilities {
+    .blinking-caret::after {
+      content: "|";
+      display: inline-block;
+      margin-left: 5px;
+      animation: blink 0.7s steps(1) infinite;
+    }
+  
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+}
+  
